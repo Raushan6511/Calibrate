@@ -8,7 +8,7 @@ const Tab = createBottomTabNavigator();
 
 const AppNavigator: React.FC = () => {
   return (
-    <Tab.Navigator >
+    <Tab.Navigator>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
