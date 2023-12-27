@@ -5,8 +5,8 @@ import {APPICON_TYPES} from '../../components/app-icon/constants';
 
 const Home: React.FC = () => {
   return (
-    <View>
-      <Text>Home Screen</Text>
+    <View style={{backgroundColor:'red'}}>
+      <Text style={{ fontFamily: 'Poppins-Italic', fontSize: 20 }}>Home Screen</Text>
       <AppIcon name={'rightcircle'} type={APPICON_TYPES.ANTDESIGN} />
     </View>
   );
