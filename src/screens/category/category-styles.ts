@@ -1,5 +1,6 @@
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import colors from '../../theme/colors';
+import { Typography } from '../../theme';
 
 // import { AppColors, Typography } from 'theme';
 // import { getFontSize, heightPxToDP, widthPxToDP } from 'common/utilities';
@@ -15,13 +16,14 @@ const styles = StyleSheet.create<Styles>({
 
   container: {
     alignItems:'center',
-    backgroundColor:colors.background,
+    backgroundColor:colors.palette.red,
     flex: 1,
+    flexDirection:'row',
     justifyContent:"center"
   },
    heading:{
     color:colors.palette.white,
-    fontFamily:'Poppins-Italic',
+    fontFamily: Typography.italic,
     fontSize:30
    }
 });

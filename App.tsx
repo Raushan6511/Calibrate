@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import LottieSplashScreen from 'react-native-lottie-splash-screen';
 
 import AppNavigator from './src/navigation/AppNavigator';
+import { SafeAreaView } from 'react-native';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -10,9 +11,11 @@ const App: React.FC = () => {
   }, []);
 
   return (
+   
     <NavigationContainer>
       <AppNavigator />
     </NavigationContainer>
+
   );
 };
 
