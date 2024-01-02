@@ -69,7 +69,7 @@ const ESText: React.FC<IHKText> = props => {
         textStyle = styles.subtitle;
         break;
       default:
-        textStyle = {};
+        textStyle = styles.default
     }
     return textStyle;
   };

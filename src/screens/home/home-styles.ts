@@ -14,15 +14,15 @@ interface Styles {
 const styles = StyleSheet.create<Styles>({
 
   container: {
-    alignItems:'center',
+    // alignItems:'center',
     backgroundColor:colors.background,
     flex: 1,
-    justifyContent:"center"
+    // justifyContent:"center"
   },
    heading:{
-    color:colors.palette.white,
+    color:colors.palette.flamingo,
     fontFamily:'Poppins-Italic',
-    fontSize:30
+    
    }
 });
 

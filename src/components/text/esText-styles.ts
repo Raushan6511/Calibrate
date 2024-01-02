@@ -1,6 +1,7 @@
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { Typography } from '../../theme';
 import colors from '../../theme/colors';
+import { getFontSize } from '../../common/utilities';
 
 // import { AppColors, Typography } from 'theme';
 // import { getFontSize, heightPxToDP, widthPxToDP } from 'common/utilities';
@@ -9,6 +10,7 @@ import colors from '../../theme/colors';
 
 interface Styles {
   container: ViewStyle;
+  default:TextStyle;
   heading: TextStyle;
   label: TextStyle; 
   subheading: TextStyle;
@@ -25,29 +27,34 @@ const styles = StyleSheet.create<Styles>({
     alignItems:'center',
     justifyContent:"center"
   },
+  default:{
+    color:colors.palette.black,
+    fontSize:getFontSize(18),
+    fontFamily:Typography.regular
+   },
    heading:{
     color:'black',
-    fontSize:25,
-    fontFamily:Typography.extraBold
+    fontSize:getFontSize(25),
+    fontFamily:Typography.semiBold
    },
    subheading:{
     color:'black',
-    fontSize:20,
-    fontFamily:Typography.bold
+    fontSize:getFontSize(20),
+    fontFamily:Typography.semiBold
    },
    title:{
     color:colors.palette.gray,
-    fontSize:25,
+    fontSize:getFontSize(25),
     fontFamily:Typography.regular
    },
    subtitle:{
     color:colors.palette.gray,
-    fontSize:20,
+    fontSize:getFontSize(20),
     fontFamily:Typography.regular
    },
    label:{
     color:colors.palette.gray,
-    fontSize:14,
+    fontSize:getFontSize(14),
     fontFamily:Typography.regular
    },
 
