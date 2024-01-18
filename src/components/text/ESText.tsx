@@ -18,7 +18,7 @@ import { styles } from './esText-styles';
  */
 interface IHKText {
   /** children is a required prop and it gives the text/child node to be displayed */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /** ellipsizeMode is a optional prop which only work with `numberOfLines` prop and give the position of ellipsis glyph in the text  */
   ellipsizeMode?: TEXT_ELLIPSIZE_MODE;
   /** numberOfLines is a optional prop and used to truncate the text with an ellipsis */

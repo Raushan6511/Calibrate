@@ -7,6 +7,7 @@ import AppIcon from '../../components/app-icon/AppIcon';
 import colors from '../../theme/colors';
 import ESText from '../../components/text/ESText';
 import { TEXT_TYPE } from '../../components/constants';
+import { APPICON_TYPES } from '../../components/app-icon/constants';
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator: React.FC = () => {
@@ -23,11 +24,11 @@ const BottomTabNavigator: React.FC = () => {
         // const height = focused ? iconFocusHeight : item.iconHeight;
         // const width = focused ? iconFocusWidth : item.iconWidth;
         const iconStyle = focused
-          ? colors.primary
-          : colors.palette.black60
+          ? {color:colors.primary}
+          : {color:colors.palette.black60}
       
         // const iconColor = { color: iconStyle };
-        const tabStyle = focused ? colors.palette.white:colors.background
+        const tabStyle = focused ? {backgroundColor:colors.palette.white}:{backgroundColor:colors.palette.lavendar}
         // const iconLabelStyle = focused ? styles.tabBarFocusText : styles.tabBarText;
       
         // useEffect(() => {
@@ -42,17 +43,17 @@ const BottomTabNavigator: React.FC = () => {
           <TouchableOpacity
             onPress={onPress}
             activeOpacity={1}
-            style={[styles.tabContainer,{backgroundColor:tabStyle}]}
+            style={[styles.tabContainer,tabStyle]}
             >
             {/* <Animatable.View ref={viewRef} duration={DURATION} style={styles.tabView}>
               {focused && <Image source={CurveImage} style={styles.curveStyle} />} */}
       
               {/* <View style={tabStyle}> */}
-              <AppIcon name={icon} type={type} size={25} color={iconStyle}/>
+              <AppIcon name={icon} type={type} size={25} color={iconStyle.color}/>
               {/* </View> */}
             {/* </Animatable.View> */}
             {/* <Text style={[styles.heading,{color:iconStyle}]}>{label}</Text> */}
-            <ESText type={TEXT_TYPE.LABEL}>{label}</ESText>
+            <ESText type={TEXT_TYPE.LABEL} style={iconStyle}>{label}</ESText>
             {/* <HKText style={iconLabelStyle}>{item.label}</HKText> */}
           </TouchableOpacity>
         );
@@ -73,6 +74,9 @@ const renderScreens = () => {
             // unmountOnBlur: item.isRefresh,
             headerShown:false,
             tabBarButton: props => <TabButton {...props} item={item} />,
+            // tabBarIcon:({size,color})=><AppIcon name={'paper-plane'} type={APPICON_TYPES.ENTYPO} color={color} />,
+            tabBarActiveTintColor:'blue'
+            
           }}
         />
       );

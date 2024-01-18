@@ -1,7 +1,9 @@
 import React, {useEffect, useRef, useState, useMemo} from 'react';
-import {FlatList, Image, View, Dimensions} from 'react-native';
+import {FlatList, View} from 'react-native';
+import FastImage from 'react-native-fast-image';
+
 import {styles} from './esSwiper-styles';
-import {carouselData} from './constants';
+import {RESIZE_MODE, SCREEN_WIDTH} from '../../common/constants';
 
 interface CarouselItem {
   id: string;
@@ -10,19 +12,32 @@ interface CarouselItem {
 
 interface IESSwiper {
   autoScroll?: boolean;
+  carouselData:CarouselItem[]
+  activeDotColor?:string
+  inActiveDotColor?:string
+  innerDot?:boolean
 }
 
-const ESSwiper: React.FC<IESSwiper> = ({autoScroll = true}) => {
+const ESSwiper: React.FC<IESSwiper> = (props) => {
+  const {autoScroll = true,carouselData,activeDotColor,innerDot=false,inActiveDotColor}=props
   const flatListRef = useRef<FlatList<CarouselItem>>(null);
-  const screenWidth = Dimensions.get('window').width;
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const dotContainerStyle= innerDot?styles.innerDotContainer:styles.dotContainer
+
   const renderItem = ({item}: {item: CarouselItem}) => (
-    <Image
+    <FastImage
+      resizeMode={RESIZE_MODE.CENTER}
       source={{uri: item.image}}
-      style={{height: 200, width: screenWidth}}
+      style={styles.image}
     />
   );
+  //data: CarouselItem[], index: number
+  const itemLayout = (data: any, index: number) => ({
+    length: SCREEN_WIDTH,
+    offset: SCREEN_WIDTH * index, // for first image - 300 * 0 = 0pixels, 300 * 1 = 300, 300*2 = 600
+    index: index,
+  });
 
   const renderDotIndicators = useMemo(
     () => () =>
@@ -31,7 +46,7 @@ const ESSwiper: React.FC<IESSwiper> = ({autoScroll = true}) => {
           key={data.id}
           style={[
             styles.dot,
-            activeIndex === index ? styles.activeDot : styles.inActive,
+            activeIndex === index ? {...styles.activeDot,backgroundColor:activeDotColor}: {...styles.inActiveDot, backgroundColor:inActiveDotColor}
           ]}
         />
       )),
@@ -40,7 +55,7 @@ const ESSwiper: React.FC<IESSwiper> = ({autoScroll = true}) => {
 
   const handleScroll = (event: {nativeEvent: {contentOffset: {x: number}}}) => {
     const scrollPosition = event.nativeEvent.contentOffset.x;
-    const index = scrollPosition / screenWidth;
+    const index = scrollPosition / SCREEN_WIDTH;
     setActiveIndex(Math.round(index));
   };
 
@@ -68,10 +83,11 @@ const ESSwiper: React.FC<IESSwiper> = ({autoScroll = true}) => {
   }, [activeIndex, autoScroll]);
 
   return (
-    <View>
+    <View >
       <FlatList
         data={carouselData}
         ref={flatListRef}
+        getItemLayout={itemLayout}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         horizontal={true}
@@ -79,7 +95,7 @@ const ESSwiper: React.FC<IESSwiper> = ({autoScroll = true}) => {
         showsHorizontalScrollIndicator={false}
         onScroll={!autoScroll ? handleScroll : undefined}
       />
-      <View style={styles.dotContainer}>{renderDotIndicators()}</View>
+      <View style={dotContainerStyle}>{renderDotIndicators()}</View>
     </View>
   );
 };
