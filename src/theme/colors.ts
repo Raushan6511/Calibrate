@@ -3,8 +3,8 @@ import { palette } from "./palette";
 
 const colors = {
     palette,
-    primary: '#D93400',
-    secondary: '#2ecc71',
+    primary: '#004CFF',
+    secondary: '#CCD9F9',
     background: '#ecf0f1',
     text: '#2c3e50',
   };
