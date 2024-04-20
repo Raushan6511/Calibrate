@@ -1,37 +1,26 @@
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
-import { Typography } from '../../theme';
-
-// import { AppColors, Typography } from 'theme';
-// import { getFontSize, heightPxToDP, widthPxToDP } from 'common/utilities';
-
-// import { SCREEN_HEIGHT } from 'common/constants';
+import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {Typography} from '../../theme';
 
 interface Styles {
   container: ViewStyle;
-  heading:TextStyle
-  tabContainer:ViewStyle
+  heading: TextStyle;
+  tabContainer: ViewStyle;
 }
 
 const styles = StyleSheet.create<Styles>({
-
   container: {
     flex: 1,
-    // backgroundColor:'red',
-    // borderWidth:10,"
   },
-   heading:{
-    color:'black',
-    fontSize:14,
-    fontFamily:Typography.regular
-   },
-   tabContainer:{
-    flex:1,
-    alignItems:'center',
-    // borderWidth:1,
-    justifyContent:'center'
-    // paddingVertical:2,
-   
-   }
+  heading: {
+    color: 'black',
+    fontFamily: Typography.regular,
+    fontSize: 14,
+  },
+  tabContainer: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+  },
 });
 
-export { styles };
+export {styles};

@@ -3,6 +3,7 @@ enum TAB_ROUTES {
     CATEGORY = 'CATEGORY',
     ORDER = 'ORDER',
     PROFILE = 'PROFILE',
+    MAP='MAP'
   }
 
   export {TAB_ROUTES}

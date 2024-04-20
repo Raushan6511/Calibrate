@@ -3,6 +3,7 @@ import Category from '../../screens/category/Category';
 import Home from '../../screens/home/Home';
 import Order from '../../screens/orders/Order';
 import Profile from '../../screens/profile/Profile';
+import Map from '../../screens/map/Map';
 import {TAB_ROUTES} from '../constants';
 
 const BottomTabScreens = [
@@ -63,6 +64,14 @@ const BottomTabScreens = [
     icon: 'user-circle-o',
     type: APPICON_TYPES.FONTAWESOME,
     component: Profile,
+  },
+  {
+    index: 5,
+    route: TAB_ROUTES.MAP,
+    label: 'Map',
+    icon: 'earth',
+    type: APPICON_TYPES.FONTISTO,
+    component: Map,
   },
 ];
 

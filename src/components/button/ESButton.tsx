@@ -8,12 +8,14 @@ interface IESButton {
   isPairButton?: boolean;
   values?: string[];
   primaryButtonColor?: string;
+  handleButtonPress: () => void;
 }
 
 export const ESButton: React.FC<IESButton> = ({
   isPairButton = false,
   values = ['Cancel', 'Save'],
   primaryButtonColor = colors.primary,
+  handleButtonPress,
 }) => {
   const renderButton = (text: string, isSecondary = false) => (
     <Pressable
@@ -21,7 +23,8 @@ export const ESButton: React.FC<IESButton> = ({
         styles.button,
         isSecondary && styles.secondaryButton,
         {backgroundColor: isSecondary ? undefined : primaryButtonColor},
-      ]}>
+      ]}
+      onPress={handleButtonPress}>
       <ESText style={isSecondary ? styles.secondaryTitle : styles.title}>
         {text}
       </ESText>
@@ -36,7 +39,7 @@ export const ESButton: React.FC<IESButton> = ({
           {renderButton(values[1])}
         </>
       ) : (
-        renderButton(values[1])
+        renderButton(values[0])
       )}
     </View>
   );

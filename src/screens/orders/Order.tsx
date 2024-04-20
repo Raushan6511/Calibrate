@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import AppIcon from '../../components/app-icon/AppIcon';
 import {APPICON_TYPES} from '../../components/app-icon/constants';
-import { styles } from './order-styles';
+import {styles} from './order-styles';
 
 const Order: React.FC = () => {
   return (
